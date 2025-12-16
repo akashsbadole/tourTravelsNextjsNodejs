@@ -17,6 +17,8 @@ import SetNecessaryCookies from "./SetNecessaryCookies";
 import { getOneDoc } from "@/lib/db/getOperationDB";
 import { headers } from "next/headers";
 import { Analytics } from "@vercel/analytics/next";
+import { ServiceWorkerProvider } from "@/components/offline/ServiceWorkerProvider";
+import { OfflineProvider } from "@/components/offline/OfflineProvider";
 
 const monse = Montserrat({
   subsets: ["latin"],
@@ -50,6 +52,19 @@ export const metadata = {
     "web app",
   ],
   metadataBase: new URL("https://golob-travel-agency.vercel.app"),
+  alternates: {
+    languages: {
+      'en': '/en',
+      'es': '/es',
+      'fr': '/fr',
+      'de': '/de',
+      'zh': '/zh',
+      'ja': '/ja',
+      'ar': '/ar',
+      'hi': '/hi',
+    },
+    canonical: 'https://golob-travel-agency.vercel.app',
+  },
   openGraph: {
     title: "Golob Travel Agency",
     description:
@@ -110,15 +125,19 @@ export default async function RootLayout({ children }) {
             endsAt={maintenanceMode.endsAt || 0}
           />
         ) : (
-          <StoreProvider>
-            <SessionProvider>
-              <div className="mx-auto max-w-[1440px]">
-                <Notice />
-                <MaintenanceNotice maintenanceMode={maintenanceMode} />
-                {children}
-              </div>
-            </SessionProvider>
-          </StoreProvider>
+          <ServiceWorkerProvider>
+            <OfflineProvider>
+              <StoreProvider>
+                <SessionProvider>
+                  <div className="mx-auto max-w-[1440px]">
+                    <Notice />
+                    <MaintenanceNotice maintenanceMode={maintenanceMode} />
+                    {children}
+                  </div>
+                </SessionProvider>
+              </StoreProvider>
+            </OfflineProvider>
+          </ServiceWorkerProvider>
         )}
         <NextTopLoader showSpinner={false} color="hsl(159, 44%, 69%)" />
         <Toaster richColors closeButton expand position="top-right" />

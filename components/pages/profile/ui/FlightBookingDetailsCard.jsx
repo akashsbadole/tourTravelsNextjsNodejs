@@ -25,6 +25,7 @@ import {
 } from "@/lib/constants";
 import CancelFlightBtn from "./CancelFlightBtn";
 import RequestRefundFlightBtn from "./RequestRefundFlightBtn";
+import ModifyFlightBtn from "./ModifyFlightBtn";
 
 export function FlightBookingDetailsCard({ className, bookingData }) {
   const {
@@ -256,6 +257,7 @@ export function FlightBookingDetailsCard({ className, bookingData }) {
         )}
         {canCancel && <CancelFlightBtn pnrCode={pnrCode} />}
         {canRefund && <RequestRefundFlightBtn pnrCode={pnrCode} />}
+        <ModifyFlightBtn bookingData={bookingData} />
       </div>
     </div>
   );

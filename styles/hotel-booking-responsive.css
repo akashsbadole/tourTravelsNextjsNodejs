@@ -1,0 +1,535 @@
+/* Enhanced Hotel Booking - Mobile Responsive Styles */
+
+/* Base responsive breakpoints */
+@media (max-width: 640px) {
+  /* Enhanced Room Selector */
+  .enhanced-room-selector {
+    padding: 1rem;
+  }
+  
+  .enhanced-room-selector .search-filter-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .enhanced-room-selector .search-container {
+    max-width: 100%;
+  }
+  
+  .enhanced-room-selector .filter-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .enhanced-room-selector .view-mode-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .enhanced-room-selector .rooms-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .enhanced-room-selector .rooms-list {
+    gap: 1rem;
+  }
+  
+  .enhanced-room-selector .room-card {
+    width: 100%;
+  }
+  
+  .enhanced-room-selector .room-card.list-view {
+    flex-direction: column;
+  }
+  
+  .enhanced-room-selector .room-card.list-view .room-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .enhanced-room-selector .room-card.list-view .room-content {
+    padding: 1rem;
+  }
+  
+  .enhanced-room-selector .selection-summary {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Room Filters */
+  .room-filters {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  .room-filters .filter-section {
+    margin-bottom: 1rem;
+  }
+  
+  .room-filters .filter-section.collapsed {
+    margin-bottom: 0.5rem;
+  }
+  
+  .room-filters .price-range-slider {
+    padding: 0.5rem 0;
+  }
+  
+  .room-filters .amenity-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  /* Room Comparison */
+  .room-comparison {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .room-comparison .comparison-table {
+    min-width: 600px;
+  }
+  
+  .room-comparison .comparison-card {
+    min-width: 280px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Room Details Modal */
+  .room-details-modal {
+    width: 95vw;
+    max-width: none;
+    height: 90vh;
+    margin: 5vh auto;
+  }
+  
+  .room-details-modal .modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .room-details-modal .room-images {
+    height: 200px;
+  }
+  
+  .room-details-modal .room-info {
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .room-details-modal .tab-content {
+    padding: 1rem;
+  }
+  
+  /* Enhanced Hotel Booking Steps */
+  .enhanced-hotel-booking {
+    padding: 1rem;
+  }
+  
+  .enhanced-hotel-booking .progress-stepper {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .enhanced-hotel-booking .step-content {
+    min-height: 60vh;
+  }
+  
+  .enhanced-hotel-booking .booking-layout {
+    flex-direction: column;
+  }
+  
+  .enhanced-hotel-booking .booking-sidebar {
+    width: 100%;
+    order: -1;
+    margin-bottom: 2rem;
+  }
+  
+  .enhanced-hotel-booking .hotel-info-card,
+  .enhanced-hotel-booking .pricing-summary,
+  .enhanced-hotel-booking .selected-rooms {
+    margin-bottom: 1rem;
+  }
+  
+  .enhanced-hotel-booking .progress-indicator {
+    margin: 2rem auto;
+  }
+  
+  /* Guest Info Form */
+  .guest-info-form {
+    padding: 1rem;
+  }
+  
+  .guest-info-form .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .guest-info-form .guest-section {
+    margin-bottom: 2rem;
+  }
+  
+  .guest-info-form .guest-counter {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .guest-info-form .counter-button {
+    padding: 0.75rem;
+  }
+  
+  /* Room Customization Form */
+  .room-customization-form {
+    padding: 1rem;
+  }
+  
+  .room-customization-form .customization-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .room-customization-form .customization-field {
+    margin-bottom: 1rem;
+  }
+  
+  .room-customization-form .customization-field select,
+  .room-customization-form .customization-field input,
+  .room-customization-form .customization-field textarea {
+    width: 100%;
+    padding: 0.75rem;
+  }
+  
+  /* Room Booking Summary */
+  .room-booking-summary {
+    padding: 1rem;
+  }
+  
+  .room-booking-summary .summary-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .room-booking-summary .summary-content {
+    gap: 1rem;
+  }
+  
+  .room-booking-summary .booking-details,
+  .room-booking-summary .guest-details,
+  .room-booking-summary .room-details,
+  .room-booking-summary .pricing-breakdown {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hotel Booking Payment */
+  .hotel-booking-payment {
+    padding: 1rem;
+  }
+  
+  .hotel-booking-payment .payment-methods {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .hotel-booking-payment .payment-form {
+    margin-top: 1.5rem;
+  }
+  
+  .hotel-booking-payment .form-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hotel-booking-payment .billing-address {
+    margin-top: 2rem;
+  }
+  
+  /* Booking Confirmation */
+  .booking-confirmation {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .booking-confirmation .success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+  }
+  
+  .booking-confirmation .confirmation-details {
+    margin-top: 2rem;
+    text-align: left;
+  }
+  
+  .booking-confirmation .booking-reference {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+  }
+  
+  .booking-confirmation .action-buttons {
+    margin-top: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .enhanced-room-selector .rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .enhanced-room-selector .room-card.list-view {
+    flex-direction: row;
+  }
+  
+  .enhanced-room-selector .room-card.list-view .room-image {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .enhanced-hotel-booking .booking-layout {
+    flex-direction: row;
+  }
+  
+  .enhanced-hotel-booking .booking-sidebar {
+    width: 320px;
+    order: 1;
+  }
+  
+  .room-comparison .comparison-card {
+    min-width: 300px;
+  }
+  
+  .guest-info-form .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .guest-info-form .guest-counter {
+    flex-direction: row;
+  }
+  
+  .room-customization-form .customization-field select,
+  .room-customization-form .customization-field input {
+    width: auto;
+  }
+  
+  .hotel-booking-payment .payment-methods {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hotel-booking-payment .form-row {
+    flex-direction: row;
+  }
+  
+  .booking-confirmation .action-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Large tablet and small desktop */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .enhanced-room-selector .rooms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .room-comparison .comparison-card {
+    min-width: 320px;
+  }
+  
+  .enhanced-hotel-booking .booking-sidebar {
+    width: 360px;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1281px) {
+  .enhanced-room-selector .rooms-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .room-comparison .comparison-card {
+    min-width: 340px;
+  }
+  
+  .enhanced-hotel-booking .booking-sidebar {
+    width: 400px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .enhanced-room-selector .room-card {
+    border: 2px solid #e5e7eb;
+  }
+  
+  .enhanced-room-selector .room-card:hover {
+    border-color: #3b82f6;
+  }
+  
+  .enhanced-room-selector .room-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .room-filters .filter-toggle {
+    min-height: 44px;
+  }
+  
+  .enhanced-hotel-booking .step-button {
+    min-height: 44px;
+  }
+  
+  .guest-info-form .counter-button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .enhanced-room-selector .room-image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .room-details-modal .room-images img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .enhanced-room-selector .selection-summary {
+    background: #1f2937;
+    color: #f9fafb;
+  }
+  
+  .enhanced-hotel-booking .progress-stepper {
+    background: #1f2937;
+  }
+  
+  .room-details-modal {
+    background: #1f2937;
+    color: #f9fafb;
+  }
+  
+  .room-filters {
+    background: #1f2937;
+    color: #f9fafb;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .enhanced-room-selector .room-card {
+    transition: none;
+  }
+  
+  .enhanced-hotel-booking .progress-indicator svg {
+    transition: none;
+  }
+  
+  .room-details-modal .modal-content {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .enhanced-room-selector .filter-controls,
+  .enhanced-room-selector .view-mode-toggle,
+  .enhanced-room-selector .selection-summary {
+    display: none;
+  }
+  
+  .enhanced-hotel-booking .progress-stepper,
+  .enhanced-hotel-booking .booking-sidebar {
+    display: none;
+  }
+  
+  .enhanced-hotel-booking .step-content {
+    width: 100%;
+  }
+  
+  .room-booking-summary,
+  .booking-confirmation {
+    page-break-inside: avoid;
+  }
+  
+  .room-details-modal .room-images {
+    display: none;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 640px) and (orientation: landscape) {
+  .enhanced-room-selector .search-filter-header {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .enhanced-room-selector .search-container {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .room-details-modal {
+    height: 95vh;
+    margin: 2.5vh auto;
+  }
+  
+  .enhanced-hotel-booking .progress-stepper {
+    padding: 0.5rem 0;
+  }
+  
+  .enhanced-hotel-booking .step-content {
+    min-height: 70vh;
+  }
+}
+
+/* Small mobile optimizations */
+@media (max-width: 380px) {
+  .enhanced-room-selector {
+    padding: 0.5rem;
+  }
+  
+  .enhanced-room-selector .rooms-grid {
+    gap: 0.5rem;
+  }
+  
+  .room-filters .amenity-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  
+  .enhanced-hotel-booking {
+    padding: 0.5rem;
+  }
+  
+  .guest-info-form {
+    padding: 0.5rem;
+  }
+  
+  .room-customization-form {
+    padding: 0.5rem;
+  }
+  
+  .hotel-booking-payment {
+    padding: 0.5rem;
+  }
+}

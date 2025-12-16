@@ -4,6 +4,7 @@ import flightFormSlice from "@/reduxStore/features/flightFormSlice";
 import stayFormSlice from "@/reduxStore/features/stayFormSlice";
 import singlePassengerFormSlice from "@/reduxStore/features/singlePassengerFormSlice";
 import hotelRoomsSelectorSlice from "@/reduxStore/features/hotelRoomSelectorSlice";
+import advancedFlightFiltersSlice from "@/reduxStore/features/advancedFlightFiltersSlice";
 export const makeStore = () => {
   return configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const makeStore = () => {
       stayForm: stayFormSlice,
       singlePassengerForm: singlePassengerFormSlice,
       hotelRoomsSelector: hotelRoomsSelectorSlice,
+      advancedFlightFilters: advancedFlightFiltersSlice,
     },
   });
 };

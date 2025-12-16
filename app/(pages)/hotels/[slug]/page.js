@@ -16,6 +16,7 @@ import { getUserDetails } from "@/lib/services/user";
 import { formatCurrency, groupBy } from "@/lib/utils";
 import { Dropdown } from "@/components/local-ui/Dropdown";
 import RoomDetailsModal from "@/components/pages/hotels.[slug]/sections/RoomDetailsModal";
+import EnhancedRoomSelector from "@/components/hotels/EnhancedRoomSelector";
 import {
   Dialog,
   DialogClose,
@@ -307,73 +308,11 @@ export default async function HotelDetailsPage({ params }) {
       <Separator className="my-[40px]" />
       <div>
         <h2 className="mb-[32px] text-2xl font-bold">Available Rooms</h2>
-        <div className="space-y-6">
-          {Object.entries(groupByRoomType).map(([roomType, rooms]) => {
-            const groupByBedOptions = groupBy(rooms, (room) => room.bedOptions);
-
-            return (
-              <Dropdown
-                key={roomType}
-                open={roomType === "Budget Room"}
-                title={roomType}
-              >
-                <div className="space-y-4 p-4">
-                  {Object.entries(groupByBedOptions).map(([key, arr]) => {
-                    const oneEquivalentRoom = arr[0];
-                    const price = hotelPriceCalculation(
-                      oneEquivalentRoom.price,
-                      1,
-                    );
-                    return (
-                      <RoomDetailsModal
-                        key={key}
-                        roomDetails={oneEquivalentRoom}
-                        customTriggerElement={
-                          <div
-                            key={key}
-                            className="group flex items-center justify-between rounded-md border-b p-1 pb-4 hover:bg-gray-100"
-                          >
-                            <div className="flex items-center gap-4">
-                              <Image
-                                src={oneEquivalentRoom.images[0]}
-                                alt="Room image"
-                                width={64}
-                                height={64}
-                                className="aspect-square rounded-md object-cover"
-                              />
-                              <div>
-                                <p className="text-sm font-medium group-hover:underline">
-                                  {oneEquivalentRoom.bedOptions}
-                                </p>
-                                <p className="text-xs font-bold opacity-60">
-                                  {formatCurrency(price.total)} / night
-                                </p>
-                                <p className="text-xs opacity-60">
-                                  Person capacity:{" "}
-                                  {oneEquivalentRoom.sleepsCount}
-                                </p>
-                                <p className="text-xs opacity-60">
-                                  Available rooms: {arr.length}
-                                </p>
-                              </div>
-                            </div>
-                            <div>
-                              {Boolean(price.discountPercentage) && (
-                                <p className="rounded-md bg-tertiary p-1 font-bold text-white">
-                                  {price.discountPercentage}% OFF
-                                </p>
-                              )}
-                            </div>
-                          </div>
-                        }
-                      />
-                    );
-                  })}
-                </div>
-              </Dropdown>
-            );
-          })}
-        </div>
+        <EnhancedRoomSelector
+          hotelId={hotelDetails._id}
+          hotelSlug={params.slug}
+          searchParams={searchState}
+        />
       </div>
       <Separator className="my-[64px]" />
       <div>

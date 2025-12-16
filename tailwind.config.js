@@ -7,20 +7,66 @@ module.exports = {
     "./components/**/*.{js,jsx}",
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
+    "./styles/**/*.{css}",
   ],
   prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1rem",
+        md: "1.5rem",
+        lg: "2rem",
+        xl: "2rem",
+        "2xl": "2rem",
+      },
       screens: {
-        "2xl": "1400px",
+        xs: "320px",    /* Small phones */
+        sm: "375px",    /* Standard phones */
+        md: "425px",    /* Large phones/phablets */
+        lg: "768px",    /* Tablets */
+        xl: "1024px",   /* Small desktops */
+        "2xl": "1280px",  /* Desktops */
+        "3xl": "1536px",  /* Large desktops */
       },
     },
     extend: {
       screens: {
+        xs: "320px",    /* Small phones */
+        sm: "375px",    /* Standard phones */
+        md: "425px",    /* Large phones/phablets */
+        lg: "768px",    /* Tablets */
+        xl: "1024px",   /* Small desktops */
+        "2xl": "1280px",  /* Desktops */
+        "3xl": "1536px",  /* Large desktops */
         xsm: "450px",
         "2xsm": "350px",
+      },
+      /* Mobile-First Spacing Scale */
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+        '144': '36rem',
+      },
+      /* Mobile-First Typography */
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.4' }],
+        'sm': ['0.875rem', { lineHeight: '1.5' }],
+        'base': ['1rem', { lineHeight: '1.6' }],
+        'lg': ['1.125rem', { lineHeight: '1.6' }],
+        'xl': ['1.25rem', { lineHeight: '1.6' }],
+        '2xl': ['1.5rem', { lineHeight: '1.4' }],
+        '3xl': ['1.875rem', { lineHeight: '1.3' }],
+        '4xl': ['2.25rem', { lineHeight: '1.2' }],
+        '5xl': ['3rem', { lineHeight: '1.1' }],
+      },
+      /* Touch-Friendly Sizing */
+      touch: {
+        'min': '44px',
+        'comfortable': '48px',
+        'large': '52px',
       },
       fontFamily: {
         tradeGothic: ["var(--font-tradegothic)"],

@@ -1,5 +1,10 @@
-import { notFound } from "next/navigation";
+import HotelSearchEnhanced from "@/components/hotels/search/HotelSearchEnhanced";
+import { HotelSearchErrorBoundary } from "@/components/error-handling/HotelSearchErrorBoundary";
 
 export default function HotelSearchPage() {
-  return notFound();
+  return (
+    <HotelSearchErrorBoundary>
+      <HotelSearchEnhanced />
+    </HotelSearchErrorBoundary>
+  );
 }

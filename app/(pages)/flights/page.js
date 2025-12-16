@@ -3,6 +3,8 @@ import { FlightDestinations } from "@/components/pages/flights/sections/FlightDe
 import { auth } from "@/lib/auth";
 import { getRecentSearches } from "@/lib/services";
 import { RecentSearches } from "@/components/sections/RecentSearches";
+import FlightSearchEnhanced from "@/components/flights/search/FlightSearchEnhanced";
+import { FlightSearchErrorBoundary } from "@/components/error-handling/FlightSearchErrorBoundary";
 
 export default async function Flights() {
   const session = await auth();
@@ -34,6 +36,14 @@ export default async function Flights() {
       </header>
 
       <main className="mx-auto mb-10 w-[90%] space-y-10 md:mb-20 md:space-y-20">
+        {/* Enhanced Flight Search Component */}
+        <FlightSearchErrorBoundary>
+          <section className="rounded-[16px] bg-white px-[24px] py-[32px] shadow-md">
+            <h2 className="text-2xl font-bold mb-6">Enhanced Flight Search</h2>
+            <FlightSearchEnhanced />
+          </section>
+        </FlightSearchErrorBoundary>
+
         {isLoggedIn && <RecentSearches searchesArr={recentSearches} />}
 
         <FlightDestinations />

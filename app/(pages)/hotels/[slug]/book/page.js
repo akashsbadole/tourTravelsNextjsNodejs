@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import NotFound from "@/app/not-found";
 import routes from "@/data/routes.json";
-import { HotelBookingSteps } from "@/components/pages/hotels.book/HotelBookingSteps";
+import { EnhancedHotelBookingSteps } from "@/components/hotels.book/EnhancedHotelBookingSteps";
 import { getHotel } from "@/lib/services/hotels";
 import validateHotelSearchParams from "@/lib/zodSchemas/hotelSearchParams";
 import { getUserDetails } from "@/lib/services/user";
@@ -50,7 +50,7 @@ export default async function HotelBookPage({ params }) {
       <main className="mx-auto my-12 w-[95%] text-secondary">
         <BreadcrumbUI />
 
-        <HotelBookingSteps
+        <EnhancedHotelBookingSteps
           hotelDetails={hotelDetails}
           searchState={searchState}
           userDetails={{

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Mobile-First Design System */
+@import '../styles/mobile-first.css';
+
 @layer base {
   :root {
     --background: 0 0% 98%;

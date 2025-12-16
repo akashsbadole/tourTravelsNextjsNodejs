@@ -2,6 +2,7 @@
 import Countdown from "@/components/local-ui/Countdown";
 import { AlertTriangle, ClockIcon } from "lucide-react";
 import MakePaymentSection from "@/components/sections/MakePaymentSection";
+import UnifiedPayment from "@/components/payment/UnifiedPayment";
 import useFetch from "@/lib/hooks/useFetch";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -26,13 +27,14 @@ export default function BookingPayment({ flightNumber, flightDateTimestamp }) {
     },
   );
   const { data, loading, error, retry } = useFetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/stripe/create_flight_booking_payment_intent`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/payments/flight/create-payment-intent`,
     {
       method: "POST",
       contentType: "application/json",
       body: JSON.stringify({
         flightNumber,
         flightDateTimestamp,
+        currency: flightBookingData?.data?.currency || "USD",
       }),
     },
   );
@@ -126,14 +128,54 @@ export default function BookingPayment({ flightNumber, flightDateTimestamp }) {
           )}
         </div>
       </div>
-      <MakePaymentSection
-        onSuccess={onSuccess}
-        middleware={middleware}
+      <UnifiedPayment
+        bookingType="flight"
+        bookingData={{
+          flightNumber,
+          flightDateTimestamp,
+        }}
+        amount={flightBookingData?.data?.totalFare}
+        currency={flightBookingData?.data?.currency || "USD"}
+        onSuccess={async (paymentData) => {
+          toast({
+            title: "Payment successful",
+            description: "Your payment was successful, redirecting...",
+            variant: "default",
+          });
+          
+          // Redirect based on provider
+          const params = new URLSearchParams();
+          if (paymentData.provider === "stripe") {
+            params.set("payment_intent", paymentData.paymentIntentId);
+            params.set("payment_intent_client_secret", paymentData.clientSecret);
+            params.set("redirect_status", "succeeded");
+          } else if (paymentData.provider === "razorpay") {
+            params.set("razorpay_payment_id", paymentData.razorpay_payment_id);
+            params.set("razorpay_order_id", paymentData.razorpay_order_id);
+          } else if (paymentData.provider === "paypal") {
+            params.set("paypal_order_id", paymentData.orderID);
+            params.set("paypal_payer_id", paymentData.payerID);
+          }
+          
+          router.push(
+            `${window.location.pathname}/success?${params.toString()}`
+          );
+        }}
+        onError={(error) => {
+          toast({
+            title: "Payment failed",
+            description: error.message || "Payment failed. Please try again.",
+            variant: "destructive",
+          });
+        }}
+        onCancel={() => {
+          toast({
+            title: "Payment cancelled",
+            description: "Payment was cancelled. You can try again.",
+            variant: "default",
+          });
+        }}
         loading={loading}
-        error={error}
-        retry={retry}
-        paymentIntents={data?.data?.paymentIntents}
-        paymentStatus={data?.data?.paymentStatus}
       />
     </>
   );

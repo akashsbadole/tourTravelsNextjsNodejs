@@ -11,7 +11,10 @@
     "start": "next start",
     "setup": "node setup.js",
     "lint": "next lint",
-    "test": "vitest --testNamePattern Testing"
+    "test": "vitest --testNamePattern Testing",
+    "test:i18n": "vitest __tests__/i18n",
+    "i18n:validate": "node scripts/check-translations.js validate",
+    "i18n:report": "node scripts/check-translations.js report"
   },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.7.4",
@@ -59,10 +62,12 @@
     "mongoose-autopopulate": "^1.1.0",
     "next": "14.2.30",
     "next-auth": "^5.0.0-beta.25",
+    "next-intl": "^4.6.0",
     "next-themes": "^0.4.6",
     "nextjs-toploader": "^1.6.12",
     "node-mailjet": "^6.0.6",
     "qrcode": "^1.5.4",
+    "razorpay": "^2.9.4",
     "react": "^18",
     "react-avatar-editor": "^13.0.2",
     "react-datepicker": "^8.4.0",
